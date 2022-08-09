@@ -1,6 +1,7 @@
 {
   "name": "socailapp",
   "version": "1.0.0",
+  "proxy":"https://social-app-sheraz.herokuapp.com/user",
   "description": "",
   "main": "index.js",
   "scripts": {

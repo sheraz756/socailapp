@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Social App</title>
+</head>
+
+<body>
+    <h1>Social App</h1>
+    <form onsubmit="socialApp();return false">
+
+        <label for="fullname">FullName</label>
+        <input type="text" id="fullname">
+        <br>
+        <label for="username">FullName</label>
+        <input type="text" id="username">
+        <br>
+        <label for="Email">FullName</label>
+        <input type="text" id="Email">
+        <br>
+        <button type="submit">signup</button>
+    </form>
+    <script>
+        function socialApp() {
+            let fullname = document.querySelector("#fullname").value;
+            let username = document.querySelector("#username").value;
+            let Email = document.querySelector("#Email").value;
+
+            axios.post('https://social-app-sheraz.herokuapp.com/user', {
+                "fullname": fullname,
+                "username":username,
+                "Email":Email
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    console.log("created")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+
+</html>
