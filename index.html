@@ -17,13 +17,19 @@
         <label for="fullname">FullName</label>
         <input type="text" id="fullname">
         <br>
-        <label for="username">FullName</label>
+        <label for="username">UserName</label>
         <input type="text" id="username">
         <br>
-        <label for="Email">FullName</label>
+        <label for="Email">Password</label>
         <input type="text" id="Email">
         <br>
         <button type="submit">signup</button>
+        <p id="result"></p>
+        <br>
+        <br>
+        <br>
+        <button onclick="getAlldata();return false;">Get your data</button>
+        <p id="result1"></p>
     </form>
     <script>
         function socialApp() {
@@ -37,13 +43,23 @@
                 "Email":Email
             })
                 .then(function (response) {
-                    console.log(response.data);
+                    document.querySelector("#result").innerHTML=response.data;
                     console.log("created")
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
+        function getAlldata(){
+            axios.get('https://social-app-sheraz.herokuapp.com/user')
+  .then(function (response) {
+    // handle success
+    console.log(response.data);
+    response.data.map(eachUser=>{
+        document.querySelector("#result1").innerHTML+=`${eachUser.fullname}:${eachUser.username}:${eachUser.Email}<br>`
+    })
+  })
+    }
     </script>
 </body>
 
